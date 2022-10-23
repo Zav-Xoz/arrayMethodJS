@@ -151,11 +151,12 @@ let a9 = [
 ];
 
 const f9 = () => {
-    let res = [];
+    let res = '';
     let val = +document.querySelector('.i-9').value;
+
     for (let i = 0; i < a9.length; i++) {
         if (a9[i].indexOf(val) !== -1) {
-            res.push(i);
+            res += `${i} `;
         }
     }
     document.querySelector('.out-9').innerHTML = res;
