@@ -57,16 +57,17 @@ const f5 = () => {
 // Давайте сделаем функцию, которая полностью будет эмулировать работу unShift без применения unShift ( push можно использовать). Функция принимает - элемент, и добавляет его в начало массива a6. Функция должна возвращать новую длину массива a6.
 
 let a6 = ["a", "b", "c", "d", "e", "f"];
-// console.log(a6);
+
 const f6 = (elem) => {
   let arr = [];
-  let val = document.querySelector(".i-6").value;
-  arr.push(val);
+
+  arr.push(elem);
   for (let i = 0; i < a6.length; i++) {
     arr.push(a6[i]);
   }
   a6 = arr;
-  //   console.log(a6);
+
+  // a6 = [elem, ...a6]; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   return a6.length;
 };
 
