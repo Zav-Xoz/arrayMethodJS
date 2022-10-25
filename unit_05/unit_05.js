@@ -133,11 +133,12 @@ let a9_index;
 let a9_even;
 
 const f9 = () => {
-    a9_index = a9.map((item, index) => index);
-    a9_even = a9.map(item => {
+    a9_even = [];
+    a9_index = a9.map((item, index) => {
         if (item % 2 === 0) {
-            return item;
+            a9_even.push(item);
         }
+        return index;
     })
     console.log(a9);
     console.log(a9_index);

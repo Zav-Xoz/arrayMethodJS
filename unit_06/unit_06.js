@@ -147,9 +147,9 @@ let a9 = [6, 7, 9];
 let z9 = {}; // {6 : 6, 7: 7, 9: 9}
 
 const f9 = () => {
-    a9.filter(item => {
+    for (let item of a9) {
         z9[item] = item;
-    })
+    }
     console.log(z9);
 }
 
