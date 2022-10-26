@@ -3,8 +3,8 @@
 
 
 let a1 = [5, 6, 7, 8, 44, 21, 43, 26, 78, 100, -2, 0, 17];
-// a1 = 'hello';
-// a1 = new Set([2, 3]);
+a1 = 'hello';
+a1 = new Set([2, 3]);
 
 const f1 = () => {
     document.querySelector('.out-1').innerHTML = Array.isArray(a1);
@@ -156,6 +156,7 @@ const f11 = () => {
     let res = a11.reduce((accum, item) => {
         if (accum < item) {
             accum = item;
+            // console.log(item)
         }
         return accum;
     })
@@ -166,15 +167,14 @@ const f11 = () => {
 // По нажатию b-12 выполняется функция f12. Функция должна перебрать массив a12 и вывести в out-12 индекс самого большого числа в массиве. Применяем reduce.
 
 let a12 = [-2, 3, 14, 15, -6, 7];
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! START
-const f12 = () => {
-    let res = a12.reduce((accum, item, index) => {
-        let out = 0;
-        if (accum < item) {
 
+const f12 = () => {
+    let res = a12.reduce((accum, item, index, array) => {
+        if (array[accum] < item) {
+            accum = index;
         }
-        return out;
-    })
+        return accum;
+    }, 0)
     document.querySelector('.out-12').innerHTML = res;
 }
 
@@ -184,7 +184,13 @@ const f12 = () => {
 let a13 = [[4, 4, 4], [4, 4], [4, 4, 4, 4], [4], [4, 4]];
 
 const f13 = () => {
-    // let res = a13.reduce((accum, item) => 
+    let res = a13.reduce((accum, item) => {
+        if (accum < item.length) {
+            accum = item.length;
+        }
+        return accum;
+    }, 0)
+    document.querySelector('.out-13').innerHTML = res;
 }
 
 // TASK 14
@@ -193,7 +199,14 @@ const f13 = () => {
 let a14 = [[4, 4, 4], [4, 4], [4, 4, 4, 4], [4], [4, 4]];
 
 const f14 = () => {
-    // let res = 
+    let res = a14.reduce((accum, item, index, array) => {
+        let num = 0;
+        if (item.length > array[num].length) {
+            num = index;
+            accum = item;
+        }
+        return accum;
+    }, [])
     document.querySelector('.out-14').innerHTML = res;
 }
 
@@ -203,8 +216,11 @@ const f14 = () => {
 let a15 = [0, 0, 1, 1, 1, 0, 2, 2, 3, 3, 3, 4, 5, 5, 6, 4, 4, 3, 1, 1, 0, 0, -1];
 
 const f15 = () => {
-    // let res = a15.reduce((accum, item) => 
-    document.querySelector('.out-15').innerHTML = res;
+    let res = a15.reduce((accum, item) => {
+        accum += item;
+        return accum;
+    })
+    document.querySelector('.out-15').innerHTML = res / a15.length;
 }
 
 // TASK 16
@@ -219,7 +235,16 @@ let a16 = [
 // Ожидаю объект вида  { 45 : "Ivar", 464 : "Astor", 17 : "Bristol" }
 
 const f16 = () => {
+    let res = a16.reduce((accum, item) => {
+        accum[item['id']] = item['name'];
+        return accum;
+    }, {})
 
+    let out = '';
+    for (let key in res) {
+        out += `${key} ${res[key]}<br>`;
+    }
+    document.querySelector('.out-16').innerHTML = out;
 }
 
 // TASK 17
@@ -234,7 +259,15 @@ let a17 = {
 let a17_res = [];
 
 const f17 = () => {
-
+    a17_res = [];
+    for (let key in a17) {
+        a17_res.push(a17[key]);
+    }
+    let out = '';
+    for (let item of a17_res) {
+        out += `${item} `;
+    }
+    document.querySelector('.out-17').innerHTML = out;
 }
 
 // TASK 18
@@ -245,7 +278,11 @@ a18[100] = 67;
 a18[2000] = 15;
 
 const f18 = () => {
-    // let res = a18.reduce((accum, item, index) => 
+    let res = a18.reduce((accum, item, index) => {
+        accum += `${index} ${item}<br>`;
+        return accum;
+    }, '')
+    document.querySelector('.out-18').innerHTML = res;
 }
 
 // TASK 19
@@ -254,8 +291,11 @@ const f18 = () => {
 let a19 = 'hello';
 
 const f19 = () => {
-    // let res = a19.split('').reduce((accum, item) 
-    // document.querySelector('.out-19').innerHTML = res;
+    let res = a19.split('').reduce((accum, item, index) => {
+        accum += `${index} ${item}<br>`;
+        return accum;
+    }, '')
+    document.querySelector('.out-19').innerHTML = res;
 }
 
 // TASK 20
@@ -264,8 +304,13 @@ const f19 = () => {
 let a20 = [4, 5, 6];
 
 const f20 = () => {
-    // let res = a19.split('').reduce((accum, item) => {
+    let res = a20.reduce((accum, item, index, array) => {
+        accum += `${array[(array.length - 1) - index]} `;
+        return accum;
+    }, '')
     // res = [6,5,4]
+
+    document.querySelector('.out-20').innerHTML = res;
 }
 
 document.querySelector('.b-1').addEventListener('click', f1);
