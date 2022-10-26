@@ -199,14 +199,15 @@ const f13 = () => {
 let a14 = [[4, 4, 4], [4, 4], [4, 4, 4, 4], [4], [4, 4]];
 
 const f14 = () => {
-    let res = a14.reduce((accum, item, index, array) => {
-        let num = 0;
-        if (item.length > array[num].length) {
-            num = index;
-            accum = item;
-        }
-        return accum;
-    }, [])
+    // let res = a14.reduce((accum, item, index, array) => {
+    //     let num = 0;
+    //     if (item.length > array[num].length) {
+    //         num = index;
+    //         accum = item;
+    //     }
+    //     return accum;
+    // }, [])
+    let res = a14.reduce((accum, item) => item.length > accum.length ? accum = item : accum);
     document.querySelector('.out-14').innerHTML = res;
 }
 
