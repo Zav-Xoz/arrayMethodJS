@@ -89,8 +89,12 @@ const f5 = () => {
 
 
 let a6 = [13, 15, 22, 23, 26, 35, 72];
+
 let a6_from = 23;
 let a6_to = 67;
+// let a6 = [4, 5, 6, 7, 8, 9, 10];
+// let a6_from = 7;
+// let a6_to = 10;
 
 const f6 = () => {
     let arr = [];
@@ -99,11 +103,10 @@ const f6 = () => {
     }
 
     let res = arr.findIndex(item => {
-        if (item > a5_from && item < a5_to) {
+        if (item > a6_from && item < a6_to) {
             return true;
         }
     })
-
     out = (arr.length - 1) - res;
     if (res === -1) out = false;
 
