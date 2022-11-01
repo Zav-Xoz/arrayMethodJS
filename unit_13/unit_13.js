@@ -12,6 +12,7 @@ const f1 = () => {
     for (let item of a1_res) {
         out += `${item} `;
     }
+
     document.querySelector('.out-1').innerHTML = out;
 }
 
@@ -164,10 +165,11 @@ const f10 = () => {
     let out = '';
     for (let i = 0; i < a10.length; i++) {
         if (a10[i] !== undefined) {
-            a10_res.push(a10[i]);
+            a10_res.push(i);
             out += `${i} `;
         }
     }
+
     document.querySelector('.out-10').innerHTML = out;
 }
 
