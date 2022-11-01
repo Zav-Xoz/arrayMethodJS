@@ -6,13 +6,12 @@ let a1 = [13, [4, 5], 22, [6, 7], [26, 35, 72]];
 let a1_res = [];
 
 const f1 = () => {
-    let a1_res = a1.flat();
     let out = '';
+    a1_res = a1.flat(1);
 
     for (let item of a1_res) {
         out += `${item} `;
     }
-
     document.querySelector('.out-1').innerHTML = out;
 }
 
